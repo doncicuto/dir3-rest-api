@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/app.js",
-    "build": "tsc",
+    "build": "npx prisma generate && tsc",
     "dev": "concurrently \"tsc -w\" \"nodemon dist/app.js\""
   },
   "devDependencies": {

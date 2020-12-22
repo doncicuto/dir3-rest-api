@@ -24,9 +24,14 @@ export const getListHandler = (unitType: number) => {
             where: parseQueryParameters(req),
           })
           .then((units) => {
-            res.json(units);
+            if (units.length > 0) {
+              res.json(units);
+            } else {
+              res.json([]);
+            }
           })
           .catch((error) => {
+            res.status(500).send({ message: error.message });
             showErrorMessage(error);
           });
         break;
@@ -39,9 +44,14 @@ export const getListHandler = (unitType: number) => {
             where: parseQueryParameters(req),
           })
           .then((units) => {
-            res.json(units);
+            if (units.length > 0) {
+              res.json(units);
+            } else {
+              res.json([]);
+            }
           })
           .catch((error) => {
+            res.status(500).send({ message: error.message });
             showErrorMessage(error);
           });
         break;
@@ -54,9 +64,14 @@ export const getListHandler = (unitType: number) => {
             where: parseQueryParameters(req),
           })
           .then((units) => {
-            res.json(units);
+            if (units.length > 0) {
+              res.json(units);
+            } else {
+              res.json([]);
+            }
           })
           .catch((error) => {
+            res.status(500).send({ message: error.message });
             showErrorMessage(error);
           });
         break;
@@ -69,9 +84,14 @@ export const getListHandler = (unitType: number) => {
             where: parseQueryParameters(req),
           })
           .then((units) => {
-            res.json(units);
+            if (units.length > 0) {
+              res.json(units);
+            } else {
+              res.json([]);
+            }
           })
           .catch((error) => {
+            res.status(500).send({ message: error.message });
             showErrorMessage(error);
           });
         break;
@@ -84,9 +104,14 @@ export const getListHandler = (unitType: number) => {
             where: parseQueryParameters(req),
           })
           .then((units) => {
-            res.json(units);
+            if (units.length > 0) {
+              res.json(units);
+            } else {
+              res.json([]);
+            }
           })
           .catch((error) => {
+            res.status(500).send({ message: error.message });
             showErrorMessage(error);
           });
         break;
@@ -99,9 +124,14 @@ export const getListHandler = (unitType: number) => {
             where: parseQueryParameters(req),
           })
           .then((units) => {
-            res.json(units);
+            if (units.length > 0) {
+              res.json(units);
+            } else {
+              res.json([]);
+            }
           })
           .catch((error) => {
+            res.status(500).send({ message: error.message });
             showErrorMessage(error);
           });
         break;

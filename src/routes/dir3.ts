@@ -78,6 +78,8 @@ dir3Router.get("/units-ccaa", getListHandler(Units.CCAA));
  *     responses:
  *       200:
  *        $ref: '#/components/responses/Unit'
+ *       400:
+ *        description: Unit not found
  */
 
 dir3Router.get("/units-ccaa/:id", getDetailHandler(Units.CCAA));
@@ -117,6 +119,8 @@ dir3Router.get("/units-eell", getListHandler(Units.EELL));
  *     responses:
  *       200:
  *        $ref: '#/components/responses/Unit'
+ *       400:
+ *        description: Unit not found
  */
 
 dir3Router.get("/units-eell/:id", getDetailHandler(Units.EELL));
@@ -154,6 +158,8 @@ dir3Router.get("/units-universities", getListHandler(Units.UNIV));
  *     responses:
  *       200:
  *        $ref: '#/components/responses/Unit'
+ *       400:
+ *        description: Unit not found
  */
 
 dir3Router.get("/units-universities/:id", getDetailHandler(Units.UNIV));
@@ -191,6 +197,8 @@ dir3Router.get("/units-justice", getListHandler(Units.JUST));
  *     responses:
  *       200:
  *        $ref: '#/components/responses/Unit'
+ *       400:
+ *        description: Unit not found
  */
 
 dir3Router.get("/units-justice/:id", getDetailHandler(Units.JUST));
@@ -228,6 +236,8 @@ dir3Router.get("/units-other-institutions", getListHandler(Units.INST));
  *     responses:
  *       200:
  *        $ref: '#/components/responses/Unit'
+ *       400:
+ *        description: Unit not found
  */
 dir3Router.get("/units-other-institutions/:id", getDetailHandler(Units.INST));
 

@@ -19,9 +19,14 @@ export const getDetailHandler = (unitType: number) => {
             where: { id: id },
           })
           .then((unit) => {
-            res.json(unit);
+            if (unit) {
+              res.json(unit);
+            } else {
+              res.status(404).send({ message: "Unit not found!" });
+            }
           })
           .catch((error) => {
+            res.status(500).send({ message: error.message });
             showErrorMessage(error);
           });
         break;
@@ -32,9 +37,14 @@ export const getDetailHandler = (unitType: number) => {
             where: { id: id },
           })
           .then((unit) => {
-            res.json(unit);
+            if (unit) {
+              res.json(unit);
+            } else {
+              res.status(404).send({ message: "Unit not found!" });
+            }
           })
           .catch((error) => {
+            res.status(500).send({ message: error.message });
             showErrorMessage(error);
           });
         break;
@@ -45,10 +55,14 @@ export const getDetailHandler = (unitType: number) => {
             where: { id: id },
           })
           .then((unit) => {
-            res.json(unit);
+            if (unit) {
+              res.json(unit);
+            } else {
+              res.status(404).send({ message: "Unit not found!" });
+            }
           })
           .catch((error) => {
-            showErrorMessage(error);
+            res.status(500).send({ message: error.message });
           });
         break;
       case Units.UNIV:
@@ -58,9 +72,14 @@ export const getDetailHandler = (unitType: number) => {
             where: { id: id },
           })
           .then((unit) => {
-            res.json(unit);
+            if (unit) {
+              res.json(unit);
+            } else {
+              res.status(404).send({ message: "Unit not found!" });
+            }
           })
           .catch((error) => {
+            res.status(500).send({ message: error.message });
             showErrorMessage(error);
           });
         break;
@@ -71,9 +90,14 @@ export const getDetailHandler = (unitType: number) => {
             where: { id: id },
           })
           .then((unit) => {
-            res.json(unit);
+            if (unit) {
+              res.json(unit);
+            } else {
+              res.status(404).send({ message: "Unit not found!" });
+            }
           })
           .catch((error) => {
+            res.status(500).send({ message: error.message });
             showErrorMessage(error);
           });
         break;
@@ -84,9 +108,14 @@ export const getDetailHandler = (unitType: number) => {
             where: { id: id },
           })
           .then((unit) => {
-            res.json(unit);
+            if (unit) {
+              res.json(unit);
+            } else {
+              res.status(404).send({ message: "Unit not found!" });
+            }
           })
           .catch((error) => {
+            res.status(500).send({ message: error.message });
             showErrorMessage(error);
           });
         break;

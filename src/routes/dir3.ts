@@ -138,7 +138,7 @@ dir3Router.get("/units-universities", getListHandler(Units.UNIV));
 
 /**
  * @openapi
- * /units-university/{id}:
+ * /units-universities/{id}:
  *   get:
  *     tags: [Units - Universities]
  *     summary: University unit detail

@@ -113,7 +113,32 @@ export const parseQueryParameters = (req: Request) => {
     hasQueryParams = true;
   }
 
-  if ("status" in req.query && typeof req.query.status === "string") {
+  if ("provinceId" in req.query && typeof req.query.provinceId === "string") {
+    let provinceId = parseInt(req.query.provinceId, 10);
+    if (!isNaN(provinceId) && provinceId >= 1 && provinceId <= 52) {
+      where.provinceId = {
+        equals: provinceId,
+      };
+      hasQueryParams = true;
+    }
+  }
+
+  if (
+    "publicLawEntity" in req.query &&
+    typeof req.query.publicLawEntity === "string" &&
+    ["S", "N"].includes(req.query.publicLawEntity)
+  ) {
+    where.publicLawEntityIndicator = {
+      equals: req.query.publicLawEntity,
+    };
+    hasQueryParams = true;
+  }
+
+  if (
+    "status" in req.query &&
+    typeof req.query.status === "string" &&
+    ["V", "E", "A", "T"].includes(req.query.status)
+  ) {
     where.status = {
       equals: req.query.status,
     };

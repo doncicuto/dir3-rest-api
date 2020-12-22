@@ -20,6 +20,7 @@ export const dir3Router = express.Router();
  *        - $ref: '#/components/parameters/offsetParam'
  *        - $ref: '#/components/parameters/limitParam'
  *        - $ref: '#/components/parameters/descriptionParam'
+ *        - $ref: '#/components/parameters/publicLawEntityParam'
  *        - $ref: '#/components/parameters/statusParam'
  *     responses:
  *       200:
@@ -56,6 +57,7 @@ dir3Router.get("/units-age/:id", getDetailHandler(Units.AGE));
  *        - $ref: '#/components/parameters/offsetParam'
  *        - $ref: '#/components/parameters/limitParam'
  *        - $ref: '#/components/parameters/descriptionParam'
+ *        - $ref: '#/components/parameters/publicLawEntityParam'
  *        - $ref: '#/components/parameters/statusParam'
  *     responses:
  *       200:
@@ -93,6 +95,8 @@ dir3Router.get("/units-ccaa/:id", getDetailHandler(Units.CCAA));
  *        - $ref: '#/components/parameters/limitParam'
  *        - $ref: '#/components/parameters/descriptionParam'
  *        - $ref: '#/components/parameters/provinceParam'
+ *        - $ref: '#/components/parameters/provinceIdParam'
+ *        - $ref: '#/components/parameters/publicLawEntityParam'
  *        - $ref: '#/components/parameters/statusParam'
  *     responses:
  *       200:
@@ -129,6 +133,7 @@ dir3Router.get("/units-eell/:id", getDetailHandler(Units.EELL));
  *        - $ref: '#/components/parameters/offsetParam'
  *        - $ref: '#/components/parameters/limitParam'
  *        - $ref: '#/components/parameters/descriptionParam'
+ *        - $ref: '#/components/parameters/publicLawEntityParam'
  *        - $ref: '#/components/parameters/statusParam'
  *     responses:
  *       200:
@@ -165,6 +170,7 @@ dir3Router.get("/units-universities/:id", getDetailHandler(Units.UNIV));
  *        - $ref: '#/components/parameters/offsetParam'
  *        - $ref: '#/components/parameters/limitParam'
  *        - $ref: '#/components/parameters/descriptionParam'
+ *        - $ref: '#/components/parameters/publicLawEntityParam'
  *        - $ref: '#/components/parameters/statusParam'
  *     responses:
  *       200:
@@ -201,6 +207,7 @@ dir3Router.get("/units-justice/:id", getDetailHandler(Units.JUST));
  *        - $ref: '#/components/parameters/offsetParam'
  *        - $ref: '#/components/parameters/limitParam'
  *        - $ref: '#/components/parameters/descriptionParam'
+ *        - $ref: '#/components/parameters/publicLawEntityParam'
  *        - $ref: '#/components/parameters/statusParam'
  *     responses:
  *       200:

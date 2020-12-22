@@ -91,6 +91,22 @@
  *        schema:
  *          type: string
  *          example: Valladolid
+ *      provinceIdParam:
+ *        name: provinceId
+ *        in: query
+ *        description: "Find units whose province id contains the search string."
+ *        required: false
+ *        schema:
+ *          type: number
+ *          example: 47
+ *      publicLawEntityParam:
+ *        name: publicLawEntity
+ *        in: query
+ *        description: "Defines whether the unit is or depends on a Public Law Entity, according to article 2 of Law 39/2015. Possible values 'S' for yes, 'N' for no."
+ *        required: false
+ *        schema:
+ *          type: string
+ *          example: N
  *      statusParam:
  *        name: status
  *        in: query

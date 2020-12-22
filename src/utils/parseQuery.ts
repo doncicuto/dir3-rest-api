@@ -115,7 +115,7 @@ export const parseQueryParameters = (req: Request) => {
 
   if ("status" in req.query && typeof req.query.status === "string") {
     where.status = {
-      contains: req.query.status,
+      equals: req.query.status,
     };
     hasQueryParams = true;
   }

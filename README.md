@@ -4,12 +4,15 @@ Este repositorio contiene código [Typescript](https://www.typescriptlang.org/) 
 
 Para desarrollar el API de consulta se ha empleado:
 
-- [Express.js](https://expressjs.com/es/) para servir las consultas al API.
+- [Express.js](https://expressjs.com/es/) web application framework para servir las consultas al API.
 - [Helmet](https://www.npmjs.com/package/helmet) para mejorar la protección del servidor Express.
 - [Dotenv](https://github.com/motdotla/dotenv) para disponer de un fichero de variables de entorno útil para el desarrollo.
 - [Prisma](https://www.prisma.io) para trabajar con la base de datos.
+- [Swagger-JSDOC](https://github.com/Surnet/swagger-jsdoc) para documentar el API.
 
 Una vez clonado el repositorio, ejecute `yarn` o `npm install` para instalar las dependencias.
+
+Para convertir el código Typescript en código Javascript ejecute: `yarn build` o `npm run build`.
 
 Para lanzar el servidor del API ejecute `yarn start` o `npm start`.
 
@@ -23,7 +26,7 @@ El siguiente artículo de Nikolas Burk publicado en el [blog de Digital Ocean](h
 
 ## API
 
-El API únicamente ofrece endpoints de consulta (GET) para acceder a la información de los distintos ficheros:
+El API únicamente ofrece endpoints de consulta (GET) para acceder a la información de los distintos tipos de unidad.
 
 - GET /units-age
 - GET /units-ccaa
@@ -40,3 +43,9 @@ Para consultar una unidad concreta usando su código DIR3 se disponen de los sig
 - GET /units-universities/:dir3
 - GET /units/justice/:dir3
 - GET /units-institutions/:dir3
+
+Se puede obtener más información de cómo usar el API accediendo a la documentación online del API generada con OpenAPI/Swagger. Se puede visitar la documentación visitando el siguiente endpoint:
+
+- GET /api-docs
+
+En dicho endpoint se pueden realizar consultas en vivo sobre la propia interfaz y encontrar ejemplos de uso.

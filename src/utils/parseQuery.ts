@@ -59,7 +59,7 @@ export const parseLimit = (req: Request) => {
   let limit = MAX_RESULTS_NUMBER;
   if (req.query.limit && typeof req.query.limit === "string") {
     limit = parseInt(req.query.limit, 10);
-    if (isNaN(limit)) {
+    if (isNaN(limit) || limit > MAX_RESULTS_NUMBER) {
       limit = MAX_RESULTS_NUMBER;
     }
   }

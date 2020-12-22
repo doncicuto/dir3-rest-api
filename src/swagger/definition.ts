@@ -66,7 +66,7 @@
  *        schema:
  *          type: number
  *          default: 0
- *          example: 10
+ *          example: 1
  *      limitParam:
  *        name: limit
  *        in: query

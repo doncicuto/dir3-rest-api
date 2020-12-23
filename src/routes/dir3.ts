@@ -4,7 +4,7 @@ import swaggerUi from "swagger-ui-express";
 import { getListHandler } from "../controllers/list";
 import { getDetailHandler } from "../controllers/detail";
 import { swaggerSpec } from "../swagger-spec";
-import { Units } from "../utils/types";
+import { UnitTypes } from "../utils/types";
 
 export const dir3Router = express.Router();
 
@@ -26,7 +26,7 @@ export const dir3Router = express.Router();
  *       200:
  *        $ref: '#/components/responses/Units'
  */
-dir3Router.get("/units-age", getListHandler(Units.AGE));
+dir3Router.get("/units-age", getListHandler(UnitTypes.AGE));
 
 /**
  * @openapi
@@ -43,7 +43,7 @@ dir3Router.get("/units-age", getListHandler(Units.AGE));
  *        $ref: '#/components/responses/Unit'
  */
 
-dir3Router.get("/units-age/:id", getDetailHandler(Units.AGE));
+dir3Router.get("/units-age/:id", getDetailHandler(UnitTypes.AGE));
 
 /**
  * @openapi
@@ -63,7 +63,7 @@ dir3Router.get("/units-age/:id", getDetailHandler(Units.AGE));
  *       200:
  *        $ref: '#/components/responses/Units'
  */
-dir3Router.get("/units-ccaa", getListHandler(Units.CCAA));
+dir3Router.get("/units-ccaa", getListHandler(UnitTypes.CCAA));
 
 /**
  * @openapi
@@ -82,7 +82,7 @@ dir3Router.get("/units-ccaa", getListHandler(Units.CCAA));
  *        description: Unit not found
  */
 
-dir3Router.get("/units-ccaa/:id", getDetailHandler(Units.CCAA));
+dir3Router.get("/units-ccaa/:id", getDetailHandler(UnitTypes.CCAA));
 
 /**
  * @openapi
@@ -104,7 +104,7 @@ dir3Router.get("/units-ccaa/:id", getDetailHandler(Units.CCAA));
  *       200:
  *        $ref: '#/components/responses/Units'
  */
-dir3Router.get("/units-eell", getListHandler(Units.EELL));
+dir3Router.get("/units-eell", getListHandler(UnitTypes.EELL));
 
 /**
  * @openapi
@@ -123,7 +123,7 @@ dir3Router.get("/units-eell", getListHandler(Units.EELL));
  *        description: Unit not found
  */
 
-dir3Router.get("/units-eell/:id", getDetailHandler(Units.EELL));
+dir3Router.get("/units-eell/:id", getDetailHandler(UnitTypes.EELL));
 
 /**
  * @openapi
@@ -143,7 +143,7 @@ dir3Router.get("/units-eell/:id", getDetailHandler(Units.EELL));
  *       200:
  *        $ref: '#/components/responses/Units'
  */
-dir3Router.get("/units-universities", getListHandler(Units.UNIV));
+dir3Router.get("/units-universities", getListHandler(UnitTypes.UNIV));
 
 /**
  * @openapi
@@ -162,7 +162,7 @@ dir3Router.get("/units-universities", getListHandler(Units.UNIV));
  *        description: Unit not found
  */
 
-dir3Router.get("/units-universities/:id", getDetailHandler(Units.UNIV));
+dir3Router.get("/units-universities/:id", getDetailHandler(UnitTypes.UNIV));
 
 /**
  * @openapi
@@ -182,7 +182,7 @@ dir3Router.get("/units-universities/:id", getDetailHandler(Units.UNIV));
  *       200:
  *        $ref: '#/components/responses/Units'
  */
-dir3Router.get("/units-justice", getListHandler(Units.JUST));
+dir3Router.get("/units-justice", getListHandler(UnitTypes.JUST));
 
 /**
  * @openapi
@@ -201,7 +201,7 @@ dir3Router.get("/units-justice", getListHandler(Units.JUST));
  *        description: Unit not found
  */
 
-dir3Router.get("/units-justice/:id", getDetailHandler(Units.JUST));
+dir3Router.get("/units-justice/:id", getDetailHandler(UnitTypes.JUST));
 
 /**
  * @openapi
@@ -221,7 +221,7 @@ dir3Router.get("/units-justice/:id", getDetailHandler(Units.JUST));
  *       200:
  *        $ref: '#/components/responses/Units'
  */
-dir3Router.get("/units-other-institutions", getListHandler(Units.INST));
+dir3Router.get("/units-other-institutions", getListHandler(UnitTypes.INST));
 
 /**
  * @openapi
@@ -239,7 +239,10 @@ dir3Router.get("/units-other-institutions", getListHandler(Units.INST));
  *       400:
  *        description: Unit not found
  */
-dir3Router.get("/units-other-institutions/:id", getDetailHandler(Units.INST));
+dir3Router.get(
+  "/units-other-institutions/:id",
+  getDetailHandler(UnitTypes.INST)
+);
 
 // Swagger API docs endpoint
 dir3Router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));

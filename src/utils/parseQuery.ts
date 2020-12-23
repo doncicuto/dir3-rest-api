@@ -2,16 +2,10 @@ import { Request } from "express";
 import { Prisma } from "@prisma/client";
 
 import { MAX_RESULTS_NUMBER } from "../utils/constants";
+import { parseIntWithDefault } from "./parseIntWithDefault";
 
 export const parseOffset = (req: Request) => {
-  let skip = 0;
-  if (req.query.offset && typeof req.query.offset === "string") {
-    skip = parseInt(req.query.offset, 10);
-    if (isNaN(skip)) {
-      skip = 0;
-    }
-  }
-  return skip;
+  return parseIntWithDefault(req.query.offset as string, 0);
 };
 
 export const parseSelect = (req: Request) => {
@@ -56,12 +50,12 @@ export const parseSelect = (req: Request) => {
 };
 
 export const parseLimit = (req: Request) => {
-  let limit = MAX_RESULTS_NUMBER;
-  if (req.query.limit && typeof req.query.limit === "string") {
-    limit = parseInt(req.query.limit, 10);
-    if (isNaN(limit) || limit > MAX_RESULTS_NUMBER) {
-      limit = MAX_RESULTS_NUMBER;
-    }
+  let limit = parseIntWithDefault(
+    req.query.limit as string,
+    MAX_RESULTS_NUMBER
+  );
+  if (limit > MAX_RESULTS_NUMBER) {
+    limit = MAX_RESULTS_NUMBER;
   }
   return limit;
 };

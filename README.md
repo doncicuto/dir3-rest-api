@@ -73,7 +73,7 @@ To launch the API server run `yarn start` or `npm start`.
 To facilitate development, Prisma and the rest of the code load their environment variables from a root .env file. The repository [https://github.com/motdotla/dotenv](https://github.com/motdotla/dotenv) offers information about this option and why this file is not part of this repository nor is it used in production. The .env file under development contains the following variables:
 
 - `DATABASE_URL="postgresql:// test:test@localhost:5432/dir3?Schema=public"` specifies the variable that will allow Prisma to connect to your database. The project uses a PostgreSQL database as an example.
-- `EXPRESS_PORT=3100` specifies on which port the API will listen, by default port 3000 will be used.
+- `EXPRESS_PORT=3000` specifies on which port the API will listen, by default port 3000 will be used.
 - `MAX_RESULTS_NUMBER=200` if defined allows specifying the maximum number of results returned by the API, if not defined, by default a maximum of 100 results will be returned.
 
 The following article by Nikolas Burk posted on the [Digital Ocean blog](https://www.digitalocean.com/community/tutorials/how-to-build-a-rest-api-with-prisma-and-postgresql) can be useful to understand this repository, although you should visit the Prisma page to see updated versions of the Prisma client.

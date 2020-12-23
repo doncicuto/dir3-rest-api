@@ -3,5 +3,5 @@ export const showErrorMessage = (error: Error): void => {
 };
 
 export const showMessage = (message: string): void => {
-  console.log(message);
+  console.info(message);
 };

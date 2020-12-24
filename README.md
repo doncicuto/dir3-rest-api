@@ -11,6 +11,7 @@ Para desarrollar el API de consulta se ha empleado:
 - [Dotenv](https://github.com/motdotla/dotenv) para disponer de un fichero de variables de entorno útil para el desarrollo.
 - [Prisma](https://www.prisma.io) para trabajar con la base de datos.
 - [Swagger-JSDOC](https://github.com/Surnet/swagger-jsdoc) para documentar el API.
+- [Lightship](https://github.com/gajus/lightship) para implementar chequeos del servicio (liveness, readiness) para futuros despliegues en K8s.
 
 Una vez clonado el repositorio, ejecute `yarn` o `npm install` para instalar las dependencias.
 
@@ -63,6 +64,7 @@ To develop the query API we have used:
 - [Dotenv](https://github.com/motdotla/dotenv) to have a file of environment variables useful for development.
 - [Prisma](https://www.prisma.io) to work with the database.
 - [Swagger-JSDOC](https://github.com/Surnet/swagger-jsdoc) to document the API.
+- [Lightship](https://github.com/gajus/lightship) to implement service checks (liveness, readiness) for future deployments on K8s.
 
 Once the repository is cloned, run `yarn` or `npm install` to install the dependencies.
 

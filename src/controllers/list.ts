@@ -1,22 +1,17 @@
-import {
-  PrismaClient,
-  PrismaClientInitializationError,
-  PrismaClientKnownRequestError,
-  PrismaClientRustPanicError,
-  PrismaClientUnknownRequestError,
-  PrismaClientValidationError,
-} from "@prisma/client";
 import { Request, Response } from "express";
-import { errorMonitor } from "stream";
+import { getFindMany } from "../utils/findMany";
+import { setServerNotReady, setServerReady } from "../utils/lightship";
 
 import { showErrorMessage } from "../utils/logging";
+import { isDBConnectionError } from "../utils/databaseErrors";
+
 import {
   parseSelect,
   parseOffset,
   parseLimit,
   parseQueryParameters,
 } from "../utils/parseQuery";
-import { Unit, UnitTypes } from "../utils/types";
+import { Unit } from "../utils/types";
 
 // TODO:
 // Here findMany is defined with any Function type because I've tried to
@@ -27,29 +22,7 @@ import { Unit, UnitTypes } from "../utils/types";
 
 export const getListHandler = (unitType: number) => {
   return (req: Request, res: Response) => {
-    let findMany: Function;
-    switch (unitType) {
-      case UnitTypes.AGE:
-        findMany = req.app.locals.prisma.organicUnitAGE.findMany;
-        break;
-      case UnitTypes.CCAA:
-        findMany = req.app.locals.prisma.organicUnitCCAA.findMany;
-        break;
-      case UnitTypes.EELL:
-        findMany = req.app.locals.prisma.organicUnitLocalEntity.findMany;
-        break;
-      case UnitTypes.UNIV:
-        findMany = req.app.locals.prisma.organicUnitUniversity.findMany;
-        break;
-      case UnitTypes.JUST:
-        findMany = req.app.locals.prisma.organicUnitJustice.findMany;
-        break;
-      case UnitTypes.INST:
-        findMany = req.app.locals.prisma.organicUnitInstitution.findMany;
-        break;
-      default:
-        throw new Error("Wrong provided unit type");
-    }
+    const findMany = getFindMany(unitType, req);
 
     findMany({
       take: parseLimit(req),
@@ -58,7 +31,7 @@ export const getListHandler = (unitType: number) => {
       where: parseQueryParameters(req),
     })
       .then((units: Unit[]) => {
-        req.app.locals.lightship.signalReady();
+        setServerReady(req);
         if (units.length > 0) {
           res.json(units);
         } else {
@@ -66,17 +39,10 @@ export const getListHandler = (unitType: number) => {
         }
       })
       .catch((error: Error) => {
-        if (
-          error.message.includes("database server") ||
-          error.message.includes("timed out") ||
-          error.message.includes("connection closed") ||
-          error.message.includes("was denied access on the database") ||
-          error.message.includes("opening a TLS connection") ||
-          error.message.includes("database string is invalid.")
-        ) {
-          req.app.locals.lightship.signalNotReady();
+        if (isDBConnectionError(error)) {
+          setServerNotReady(req);
         }
-        res.status(500).send({ message: error.message });
+        res.status(500).json({ message: error.message });
         showErrorMessage(error);
       });
   };

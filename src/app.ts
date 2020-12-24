@@ -14,37 +14,36 @@ dotenv.config();
 
 // Create our database connection with Prisma
 const prisma = new PrismaClient();
+prisma
+  .$connect()
+  .then(() => {
+    // Using lightship for readiness, liveness checks
+    const lightship = createLightship();
+    lightship.registerShutdownHandler(async () => {
+      await prisma.$disconnect();
+      server.close();
+    });
 
-// Using lightship for readiness, liveness checks
-const lightship = createLightship();
-lightship.registerShutdownHandler(async () => {
-  await prisma.$disconnect();
-  server.close();
-});
+    // Express
+    const app = express();
+    app.locals.prisma = prisma;
+    app.locals.lightship = lightship;
+    app.use(morgan<express.Request, express.Response>("combined"));
+    app.use(helmet());
+    app.use("/", dir3Router);
 
-// Express
-const app = express();
-
-// Morgan logger
-app.use(morgan<express.Request, express.Response>("combined"));
-
-// Express Middleware
-app.use(helmet());
-
-// Share our prisma client and lightship with our Express routers
-app.locals.prisma = prisma;
-app.locals.lightship = lightship;
-
-// Express Router
-app.use("/", dir3Router);
-
-// Launch Express
-const server = app
-  .listen(EXPRESS_PORT, () => {
-    lightship.signalReady();
-    return showMessage(`Server is listening on port: ${EXPRESS_PORT}`);
+    // Launch Express
+    const server = app
+      .listen(EXPRESS_PORT, () => {
+        lightship.signalReady();
+        return showMessage(`Server is listening on port: ${EXPRESS_PORT}`);
+      })
+      .on("error", async (err) => {
+        await prisma.$disconnect();
+        return showErrorMessage(err);
+      });
   })
-  .on("error", async (err) => {
-    await prisma.$disconnect();
-    return showErrorMessage(err);
+  .catch((error) => {
+    showErrorMessage(new Error("Could not connect to database."));
+    process.exit(1);
   });

@@ -19,7 +19,7 @@ steps:
   image: plugins/docker
   settings:
     repo: registry.arrakis.ovh/doncicuto/dir3-rest-api
-    registry: https://registry.arrakis.ovh
+    registry: registry.arrakis.ovh
     auto_tag: true
     auto_tag_suffix: linux-amd64
     username:

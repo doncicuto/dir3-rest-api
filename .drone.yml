@@ -1,0 +1,22 @@
+kind: pipeline
+type: kubernetes
+name: build-rest-api
+
+steps:
+- name: "build"
+  image: node:lts
+  commands:
+  - yarn
+  - yarn start
+
+- name: docker  
+  image: plugins/docker
+  settings:
+    repo: doncicuto/dir3-rest-api
+    registry: registry.arrakis.ovh
+    auto_tag: true
+    auto_tag_suffix: linux-amd64
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password

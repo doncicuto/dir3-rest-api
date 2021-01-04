@@ -9,9 +9,9 @@ steps:
   - git submodule init && git submodule update
 
 - name: "build"
-  image: node:lts
+  image: node:lts-alpine
   commands:
-  - yarn && yarn prisma generate && yarn tsc
+  - yarn && yarn prisma generate && yarn tsc && npm prune --production
 
 - name: docker  
   image: plugins/docker
@@ -19,7 +19,6 @@ steps:
     repo: registry.arrakis.ovh/doncicuto/dir3-rest-api
     registry: registry.arrakis.ovh
     auto_tag: true
-    auto_tag_suffix: linux-amd64
     username:
       from_secret: docker_username
     password:

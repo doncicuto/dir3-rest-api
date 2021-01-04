@@ -22,5 +22,7 @@ steps:
     registry: registry.arrakis.ovh
     auto_tag: true
     auto_tag_suffix: linux-amd64
-    username: test
-    password: test
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password

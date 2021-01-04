@@ -20,7 +20,7 @@ steps:
   settings:
     repo: registry.arrakis.ovh/doncicuto/dir3-rest-api
     registry: registry.arrakis.ovh
-    debug: true
+    custom_dns: [ 8.8.8.8 ]
     auto_tag: true
     auto_tag_suffix: linux-amd64
     username:

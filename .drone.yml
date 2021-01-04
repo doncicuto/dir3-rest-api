@@ -12,8 +12,6 @@ steps:
   image: node:lts
   commands:
   - yarn && yarn prisma generate && yarn tsc
-  - ls -l
-
 
 - name: docker  
   image: plugins/docker

@@ -25,3 +25,16 @@ steps:
       from_secret: docker_username
     password:
       from_secret: docker_password
+
+- name: deploy
+  image: danielgormly/drone-plugin-kube:0.2.0
+  settings:
+    template: k8s/deployment.yaml
+    namespace:
+      from_secret: k8s_namespace
+    ca: 
+      from_secret: k8s_ca
+    server: 
+      from_secret: k8s_server
+    token:
+      from_secret: k8s_token

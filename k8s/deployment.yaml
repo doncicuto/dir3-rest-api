@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dir3-rest-api-deployment
+  labels:
+    app: dir3-rest-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dir3-rest-api
+  template:
+    metadata:
+      labels:
+        app: dir3-rest-api
+    spec:
+      containers:
+      - name: dir3-rest-api-cont 
+        image: registry.arrakis.ovh/doncicuto/dir3-rest-api:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
+        env: 
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: database-url
+              key: database-url
+      imagePullSecrets: 
+        - name: registrycred

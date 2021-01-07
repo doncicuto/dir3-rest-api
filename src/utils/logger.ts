@@ -4,7 +4,6 @@ import * as expressWinston from "express-winston";
 import { SyslogTransportOptions, Syslog } from "winston-syslog";
 
 const logger = winston.createLogger({
-  level: "warn",
   transports: [
     new winston.transports.Console({
       level: "debug",
@@ -22,7 +21,7 @@ if (process.env.PAPERTRAIL_HOST && process.env.PAPERTRAIL_PORT) {
     localhost: os.hostname(),
     app_name: "DIR3",
     eol: "\n",
-    level: "warn",
+    level: "error",
   };
   const papertrail = new Syslog(paperTrailOpt);
   logger.add(papertrail);

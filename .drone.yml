@@ -7,12 +7,22 @@ steps:
   image: alpine/git
   commands:
   - git submodule init && git submodule update
+  when:
+    branch:
+    - master
+    event:
+    - push
 
 - name: "build"
   image: node:lts-alpine
   commands:
   - yarn && yarn prisma generate && yarn tsc && npm prune --production
-
+  when:
+    branch:
+    - master
+    event:
+    - push
+    
 - name: docker  
   image: plugins/docker
   settings:
@@ -28,6 +38,8 @@ steps:
   when:
     branch:
     - master
+    event:
+    - push
 - name: deploy
   image: danielgormly/drone-plugin-kube:0.2.0
   settings:
@@ -43,3 +55,5 @@ steps:
   when:
     branch:
     - master
+    event:
+    - push

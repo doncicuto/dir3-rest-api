@@ -12,6 +12,7 @@ Para desarrollar el API de consulta se ha empleado:
 - [Prisma](https://www.prisma.io) para trabajar con la base de datos.
 - [Swagger-JSDOC](https://github.com/Surnet/swagger-jsdoc) para documentar el API.
 - [Lightship](https://github.com/gajus/lightship) para implementar chequeos del servicio (liveness, readiness) para futuros despliegues en K8s.
+- [Winston](https://www.npmjs.com/package/winston) para gestionar los logs incluyendo la posibilidad de remitirlos a Papertrail.
 
 Una vez clonado el repositorio, ejecute `yarn` o `npm install` para instalar las dependencias.
 
@@ -24,8 +25,11 @@ Para facilitar el desarrollo, Prisma así como el resto del código cargan sus v
 - `DATABASE_URL="postgresql://test:test@localhost:5432/dir3?schema=public"` especifica la variable que permitirá a Prisma conectarse con su base de datos. El proyecto utiliza una base de datos PostgreSQL como ejemplo.
 - `EXPRESS_PORT=3000` especifica en qué puerto escuchará el API, por defecto se usará el puerto 3000.
 - `MAX_RESULTS_NUMBER=200` si está definida permite especificar el número máximo de resultados que devuelve el API, si no está definida, por defecto se devolverá un máximo de 100 resultadoss.
+- `PAPERTRAIL_HOST` y `PAPERTRAIL_PORT` define el host y el puerto para enviar logs a Papertrail. Tiene más información en la [página de documentación de Papertrail](https://documentation.solarwinds.com/en/Success_Center/papertrail/Content/kb/configuration/configuring-centralized-logging-from-nodejs-apps.htm).
 
 El siguiente artículo de Nikolas Burk publicado en el [blog de Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-build-a-rest-api-with-prisma-and-postgresql-es) puede resultar de utilidad para entender este repositorio, aunque deberá visitar la página de Prisma para consultar versiones actualizadas del cliente de Prisma.
+
+Este repositorio emplea [Drone CI](https://docs.drone.io/) para crear una imagen Docker, alojarla en un repositorio privado y desplegar dicha imagen en un clúster de K8s. Puede consultar el fichero .drone.yml, Dockerfile y el directorio k8s para hacerse una idea de su funcionamiento.
 
 ### API
 
@@ -65,6 +69,7 @@ To develop the query API we have used:
 - [Prisma](https://www.prisma.io) to work with the database.
 - [Swagger-JSDOC](https://github.com/Surnet/swagger-jsdoc) to document the API.
 - [Lightship](https://github.com/gajus/lightship) to implement service checks (liveness, readiness) for future deployments on K8s.
+- [Winston](https://www.npmjs.com/package/winston) for log management including sending logs to Papertrail.
 
 Once the repository is cloned, run `yarn` or `npm install` to install the dependencies.
 
@@ -77,8 +82,11 @@ To facilitate development, Prisma and the rest of the code load their environmen
 - `DATABASE_URL="postgresql:// test:test@localhost:5432/dir3?Schema=public"` specifies the variable that will allow Prisma to connect to your database. The project uses a PostgreSQL database as an example.
 - `EXPRESS_PORT=3000` specifies on which port the API will listen, by default port 3000 will be used.
 - `MAX_RESULTS_NUMBER=200` if defined allows specifying the maximum number of results returned by the API, if not defined, by default a maximum of 100 results will be returned.
+- `PAPERTRAIL_HOST` and `PAPERTRAIL_PORT` defines the host and port for papertrail logging. You can find more info at [Papertrail documentation page](https://documentation.solarwinds.com/en/Success_Center/papertrail/Content/kb/configuration/configuring-centralized-logging-from-nodejs-apps.htm).
 
 The following article by Nikolas Burk posted on the [Digital Ocean blog](https://www.digitalocean.com/community/tutorials/how-to-build-a-rest-api-with-prisma-and-postgresql) can be useful to understand this repository, although you should visit the Prisma page to see updated versions of the Prisma client.
+
+This repository uses [Drone CI](https://docs.drone.io/) to create a Docker image, host it in a private repository, and deploy said image to a K8s cluster. You can consult the .drone.yml file, Dockerfile and the k8s directory to get an idea of ​​how they work.
 
 ### API
 

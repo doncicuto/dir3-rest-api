@@ -1,11 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 import helmet from "helmet";
-import morgan from "morgan";
 import { PrismaClient } from "@prisma/client";
 import { createLightship } from "lightship";
 
 import { dir3Router } from "./routes/dir3";
+import { loggerMiddleware, errorLoggerMiddleware } from "./utils/logger";
 import { showErrorMessage, showMessage } from "./utils/logging";
 import { EXPRESS_PORT } from "./utils/constants";
 
@@ -28,7 +28,8 @@ prisma
     const app = express();
     app.locals.prisma = prisma;
     app.locals.lightship = lightship;
-    app.use(morgan<express.Request, express.Response>("combined"));
+    app.use(loggerMiddleware);
+    app.use(errorLoggerMiddleware);
     app.use(helmet());
     app.use("/", dir3Router);
 

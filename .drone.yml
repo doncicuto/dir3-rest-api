@@ -40,6 +40,7 @@ steps:
     - master
     event:
     - push
+
 - name: deploy
   image: danielgormly/drone-plugin-kube:0.2.0
   settings:
@@ -53,6 +54,19 @@ steps:
     token:
       from_secret: k8s_token
   when:
+    branch:
+    - master
+    event:
+    - push
+
+- name: slack
+  image: plugins/slack
+  settings:
+    webhook:
+      from_secret: slack_webhook
+    channel: general
+  when:
+    status: [ success, failure ]
     branch:
     - master
     event:

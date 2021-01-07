@@ -25,7 +25,9 @@ steps:
       from_secret: docker_username
     password:
       from_secret: docker_password
-
+  when:
+    branch:
+    - master
 - name: deploy
   image: danielgormly/drone-plugin-kube:0.2.0
   settings:
@@ -38,3 +40,6 @@ steps:
       from_secret: k8s_server
     token:
       from_secret: k8s_token
+  when:
+    branch:
+    - master

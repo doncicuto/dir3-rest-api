@@ -15,8 +15,6 @@ const logger = winston.createLogger({
 });
 
 if (process.env.PAPERTRAIL_HOST && process.env.PAPERTRAIL_PORT) {
-  console.log(process.env.PAPERTRAIL_HOST);
-  console.log(process.env.PAPERTRAIL_PORT);
   const paperTrailOpt: SyslogTransportOptions = {
     host: process.env.PAPERTRAIL_HOST,
     port: parseInt(process.env.PAPERTRAIL_PORT, 10),

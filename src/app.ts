@@ -31,7 +31,7 @@ prisma
     app.use(loggerMiddleware);
     app.use(errorLoggerMiddleware);
     app.use(helmet());
-    app.use("/", dir3Router);
+    app.use("/v1", dir3Router);
 
     // Launch Express
     const server = app

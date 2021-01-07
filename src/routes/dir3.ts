@@ -10,7 +10,7 @@ export const dir3Router = express.Router();
 
 /**
  * @openapi
- * /units-age:
+ * /v1/units-age:
  *   get:
  *     tags: [Units - AGE]
  *     summary: List of AGE units
@@ -30,7 +30,7 @@ dir3Router.get("/units-age", getListHandler(UnitTypes.AGE));
 
 /**
  * @openapi
- * /units-age/{id}:
+ * /v1/units-age/{id}:
  *   get:
  *     tags: [Units - AGE]
  *     summary: AGE unit detail
@@ -47,7 +47,7 @@ dir3Router.get("/units-age/:id", getDetailHandler(UnitTypes.AGE));
 
 /**
  * @openapi
- * /units-ccaa:
+ * /v1/units-ccaa:
  *   get:
  *     tags: [Units - CCAA]
  *     summary: List of CCAA (Autonomous Communities) units
@@ -67,7 +67,7 @@ dir3Router.get("/units-ccaa", getListHandler(UnitTypes.CCAA));
 
 /**
  * @openapi
- * /units-ccaa/{id}:
+ * /v1/units-ccaa/{id}:
  *   get:
  *     tags: [Units - CCAA]
  *     summary: CCAA (Autonomous Community) unit detail
@@ -86,7 +86,7 @@ dir3Router.get("/units-ccaa/:id", getDetailHandler(UnitTypes.CCAA));
 
 /**
  * @openapi
- * /units-eell:
+ * /v1/units-eell:
  *   get:
  *     tags: [Units - EELL]
  *     summary: List of EELL (Local Entities) units
@@ -108,7 +108,7 @@ dir3Router.get("/units-eell", getListHandler(UnitTypes.EELL));
 
 /**
  * @openapi
- * /units-eell/{id}:
+ * /v1/units-eell/{id}:
  *   get:
  *     tags: [Units - EELL]
  *     summary: EELL (Local Entity) unit detail
@@ -127,7 +127,7 @@ dir3Router.get("/units-eell/:id", getDetailHandler(UnitTypes.EELL));
 
 /**
  * @openapi
- * /units-universities:
+ * /v1/units-universities:
  *   get:
  *     tags: [Units - Universities]
  *     summary: List of Universities units
@@ -147,7 +147,7 @@ dir3Router.get("/units-universities", getListHandler(UnitTypes.UNIV));
 
 /**
  * @openapi
- * /units-universities/{id}:
+ * /v1/units-universities/{id}:
  *   get:
  *     tags: [Units - Universities]
  *     summary: University unit detail
@@ -166,7 +166,7 @@ dir3Router.get("/units-universities/:id", getDetailHandler(UnitTypes.UNIV));
 
 /**
  * @openapi
- * /units-justice:
+ * /v1/units-justice:
  *   get:
  *     tags: [Units - Justice]
  *     summary: List of Justice units
@@ -186,7 +186,7 @@ dir3Router.get("/units-justice", getListHandler(UnitTypes.JUST));
 
 /**
  * @openapi
- * /units-justice/{id}:
+ * /v1/units-justice/{id}:
  *   get:
  *     tags: [Units - Justice]
  *     summary: Justice unit detail
@@ -205,7 +205,7 @@ dir3Router.get("/units-justice/:id", getDetailHandler(UnitTypes.JUST));
 
 /**
  * @openapi
- * /units-other-institutions:
+ * /v1/units-other-institutions:
  *   get:
  *     tags: [Units - Other Institutions]
  *     summary: List of Other Institutions units
@@ -225,7 +225,7 @@ dir3Router.get("/units-other-institutions", getListHandler(UnitTypes.INST));
 
 /**
  * @openapi
- * /units-other-institutions/{id}:
+ * /v1/units-other-institutions/{id}:
  *   get:
  *     tags: [Units - Other Institutions]
  *     summary: Other institution unit detail

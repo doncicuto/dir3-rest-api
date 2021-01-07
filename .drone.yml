@@ -3,7 +3,7 @@ type: kubernetes
 name: build-rest-api
 
 steps:
-- name: "git submodule"
+- name: "submodules"
   image: alpine/git
   commands:
   - git submodule init && git submodule update
@@ -57,3 +57,9 @@ steps:
     - master
     event:
     - push
+
+trigger:
+  branch:
+  - master
+  event:
+  - push

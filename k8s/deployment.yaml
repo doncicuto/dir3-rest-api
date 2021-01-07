@@ -29,5 +29,15 @@ spec:
             secretKeyRef:
               name: database-url
               key: database-url
+        - name: PAPERTRAIL_HOST
+          valueFrom:
+            secretKeyRef:
+              name: papertrail
+              key: host
+        - name: PAPERTRAIL_PORT
+          valueFrom:
+            secretKeyRef:
+              name: papertrail
+              key: port
       imagePullSecrets: 
         - name: registrycred

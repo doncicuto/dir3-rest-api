@@ -18,7 +18,7 @@ export const getFindUnique = (unitType: number, req: Request): Function => {
       findUnique = req.app.locals.prisma.organicUnitCCAA.findUnique;
       break;
     case UnitTypes.EELL:
-      findUnique = req.app.locals.prisma.organicUnitLocalEntitcy.findUnique;
+      findUnique = req.app.locals.prisma.organicUnitLocalEntity.findUnique;
       break;
     case UnitTypes.UNIV:
       findUnique = req.app.locals.prisma.organicUnitUniversity.findUnique;

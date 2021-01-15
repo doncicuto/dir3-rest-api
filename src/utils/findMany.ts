@@ -2,7 +2,7 @@ import { Request } from "express";
 import { UnitTypes } from "./types";
 
 // TODO:
-// Here findUnique is defined with Function type because I've tried to
+// Here findMany is defined with Function type because I've tried to
 // use the organicUnitAGEDelegate | organicUnitCCAADelegate ... and Typescript
 // throws 'Each member of the union type has signatures, but none of those
 // signatures are compatible with each other'. So I've rather choose to keep

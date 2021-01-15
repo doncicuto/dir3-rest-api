@@ -30,6 +30,7 @@ if (process.env.PAPERTRAIL_HOST && process.env.PAPERTRAIL_PORT) {
 export const loggerMiddleware = expressWinston.logger({
   winstonInstance: logger,
   statusLevels: true,
+  responseWhitelist: [...expressWinston.responseWhitelist, "body"],
 });
 
 export const errorLoggerMiddleware = expressWinston.errorLogger({

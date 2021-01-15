@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
       - name: dir3-rest-api-cont 
-        image: registry.arrakis.ovh/doncicuto/dir3-rest-api:latest
+        image: registry.arrakis.ovh/doncicuto/dir3-rest-api
+        imagePullPolicy: Always
         resources:
           limits:
             memory: "128Mi"

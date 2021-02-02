@@ -1,9 +1,15 @@
 import * as os from "os";
-import winston from "winston";
+import winston, { format } from "winston";
 import * as expressWinston from "express-winston";
 import { SyslogTransportOptions, Syslog } from "winston-syslog";
 
 const logger = winston.createLogger({
+  format: format.combine(
+    format.timestamp({
+      format: "YYYY-MM-DD HH:mm:ss",
+    }),
+    format.simple()
+  ),
   transports: [
     new winston.transports.Console({
       level: "debug",

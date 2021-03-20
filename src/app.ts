@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import helmet from "helmet";
+import cors from "cors";
 import { PrismaClient } from "@prisma/client";
 import { createLightship } from "lightship";
 
@@ -24,12 +25,24 @@ prisma
       server.close();
     });
 
+    // Cors
+    const corsOptions = {
+      methods: "GET,HEAD,OPTIONS",
+      origin: "*",
+      optionsSuccessStatus: 204,
+      preflightContinue: false,
+      maxAge: 84600,
+    };
+
     // Express
     const app = express();
     app.locals.prisma = prisma;
     app.locals.lightship = lightship;
     app.use(loggerMiddleware);
     app.use(errorLoggerMiddleware);
+    app.use((req, resp, next) => {
+      next();
+    }, cors(corsOptions));
     app.use(helmet());
     app.use("/v1", dir3Router);
 
